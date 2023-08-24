@@ -88,7 +88,7 @@ export function Profile() {
         </TouchableOpacity>
         </Center>
         <VStack px={10} mt={3} mb={9}>
-          <Heading color="gray.200" fontSize="md" mb={2}>
+          <Heading color="gray.200" fontSize="md" mb={2} alignSelf="flex-start" mt={12} fontFamily="heading">
             Alterar senha
           </Heading>
 
