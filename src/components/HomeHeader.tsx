@@ -6,6 +6,8 @@ import defaulUserPhotoImg from '@assets/userPhotoDefault.png';
 import { UserPhoto } from './UserPhoto';
 import { useAuth } from '@hooks/useAuth';
 
+import { api } from '@services/api';
+
 
 export function HomeHeader() {
 
@@ -14,7 +16,11 @@ export function HomeHeader() {
   return (
     <HStack bg="gray.600" pt={16} pb={5} px={8} alignItems="center">
       <UserPhoto 
-        source={user.avatar  ? { uri: user.avatar } : defaulUserPhotoImg}
+        source={
+          user.avatar  
+          ? { uri: `${api.defaults.baseURL}/avatar/${user.avatar}` } 
+          : defaulUserPhotoImg
+        }
         size={16}
         alt="Imagem do usuário"
         mr={4}
