@@ -1,7 +1,6 @@
 import axios, { AxiosError, AxiosInstance } from "axios";
 
 import { AppError } from "@utils/AppError";
-
 import { storageAuthTokenGet, storageAuthTokenSave } from "@storage/storageAuthToken";
 
 type SignOut = () => void;
@@ -16,7 +15,7 @@ type APIInstanceProps = AxiosInstance & {
 }
 
 const api = axios.create({
-  baseURL: 'http://192.168.100.7:3333'
+  baseURL: 'https://react-native-personal-gym-back-kfaxatwiv-alvarobraz.vercel.app',
 }) as APIInstanceProps;
 
 let failedQueued: Array<PromiseType> = [];
@@ -32,6 +31,7 @@ api.registerInterceptTokenManager = singOut => {
           singOut();
           return Promise.reject(requestError)
         }
+        
         const originalRequestConfig = requestError.config;
 
         if(isRefreshing) {
@@ -53,7 +53,6 @@ api.registerInterceptTokenManager = singOut => {
         return new Promise(async (resolve, reject) => {
           try {
             const { data } = await api.post('/sessions/refresh-token', { refresh_token });
-          
             await storageAuthTokenSave({ token: data.token, refresh_token: data.refresh_token });
 
             if(originalRequestConfig.data) {
@@ -70,13 +69,12 @@ api.registerInterceptTokenManager = singOut => {
             console.log("TOKEN ATUALIZADO");
 
             resolve(api(originalRequestConfig));
-
           } catch (error: any) {
             console.log(error)
             failedQueued.forEach(request => {
               request.onFailure(error);
             })
-          
+
             singOut();
             reject(error);
           } finally {
@@ -84,10 +82,11 @@ api.registerInterceptTokenManager = singOut => {
             failedQueued = []
           }
         })
+
       }
-
+      
       singOut();
-
+      
     }
 
     if(requestError.response && requestError.response.data) {
@@ -95,12 +94,13 @@ api.registerInterceptTokenManager = singOut => {
     } else {
       return Promise.reject(requestError)
     }
-
   });
 
   return () => {
     api.interceptors.response.eject(interceptTokenManager);
   }
 }
+
+
 
 export { api };
