@@ -29,7 +29,6 @@
     "react-native-screens": "^3.24.0",
     "react-native-svg": "^13.9.0",
     "react-native-svg-transformer": "^1.1.0",
-    "uuid": "^9.0.0",
     "yup": "^1.2.0"
   },
   "devDependencies": {

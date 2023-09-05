@@ -68,6 +68,7 @@ As seguintes tecnologias foram utilizadas no projeto:
 │   ├── icon.png
 │   └── splash.png
 ├── babel.config.js
+├── LICENSE
 ├── metro.config.js
 ├── package.json
 ├── patches
@@ -98,6 +99,15 @@ As seguintes tecnologias foram utilizadas no projeto:
 │   │   ├── Loading.tsx
 │   │   ├── ScreenHeader.tsx
 │   │   └── UserPhoto.tsx
+│   ├── contexts
+│   │   └── AuthContext.tsx
+│   ├── dtos
+│   │   ├── ExerciseDTO.ts
+│   │   ├── HistoryByDayDTO.ts
+│   │   ├── HistoryDTO.ts
+│   │   └── UserDTO.ts
+│   ├── hooks
+│   │   └── useAuth.tsx
 │   ├── routes
 │   │   ├── app.routes.tsx
 │   │   ├── auth.routes.tsx
@@ -109,14 +119,23 @@ As seguintes tecnologias foram utilizadas no projeto:
 │   │   ├── Profile.tsx
 │   │   ├── SignIn.tsx
 │   │   └── SignUp.tsx
+│   ├── services
+│   │   └── api.ts
+│   ├── storage
+│   │   ├── storageAuthToken.ts
+│   │   ├── storageConfig.ts
+│   │   └── storageUser.ts
 │   ├── theme
 │   │   └── index.ts
-│   └── @types
-│       ├── FileSystem.d.ts
-│       ├── png.d.ts
-│       └── svg.d.ts
+│   ├── @types
+│   │   ├── FileSystem.d.ts
+│   │   ├── png.d.ts
+│   │   └── svg.d.ts
+│   └── utils
+│       └── AppError.ts
 ├── tsconfig.json
 └── yarn.lock
+
 
 ```
 
